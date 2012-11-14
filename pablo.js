@@ -9,7 +9,24 @@
 
 */
 
-var Pablo = (function(document, Array, Element, SVGElement, NodeList){
+// Uses AMD or browser globals to create a module.
+// Based on Universal Module Definition pattern (amdWebGlobal)
+// https://github.com/umdjs/umd
+
+(function (root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        // AMD. Register as an anonymous module.
+        define([], function () {
+            // Also create a global in case some scripts
+            // that are loaded still are looking for
+            // a global even when an AMD loader is in use.
+            return (root.Pablo = factory(root.document, root.Array, root.Element, root.SVGElement, root.NodeList));
+        });
+    } else {
+        // Browser globals
+        root.Pablo = factory(root.document, root.Array, root.Element, root.SVGElement, root.NodeList);
+    }
+}(this, function (document, Array, Element, SVGElement, NodeList) {
     'use strict';
     
     var /* SETTINGS */
@@ -20,7 +37,9 @@ var Pablo = (function(document, Array, Element, SVGElement, NodeList){
         vendorPrefixes = ['', '-moz-', '-webkit-', '-khtml-', '-o-', '-ms-'],
 
         testElement, supportsClassList, hyphensToCamelCase, cssClassApi,
-        pabloCollectionApi;
+        pabloCollectionApi,
+
+        Pablo = {};
 
     
     function make(elementName){
@@ -990,4 +1009,4 @@ var Pablo = (function(document, Array, Element, SVGElement, NodeList){
     /////
     
     return Pablo;
-}(window.document, window.Array, window.Element, window.SVGElement, window.NodeList));
+}));
