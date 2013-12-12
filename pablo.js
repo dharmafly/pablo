@@ -33,7 +33,7 @@
             match = /((webkit))[ \/]([\w.]+)/.exec(ua) ||
                     /((o)pera)(?:.*version|)[ \/]([\w.]+)/.exec(ua) ||
                     /((trident))(?:.*? rv:([\w.]+)|)/.exec(ua) ||
-                    /((ms)ie) ([\w.]+)/i.exec(ua) ||
+                    /((ms)ie) ([\w.]+)/.exec(ua) ||
                     ua.indexOf("compatible") < 0 &&
                         /((moz)illa)(?:.*? rv:([\w.]+)|)/.exec(ua),
             name, prefix, version;
