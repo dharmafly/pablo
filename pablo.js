@@ -32,7 +32,7 @@
         var ua = navigator.userAgent.toLowerCase(),
             match = /((webkit))[ \/]([\w.]+)/.exec(ua) ||
                     /((o)pera)(?:.*version|)[ \/]([\w.]+)/.exec(ua) ||
-                    /((Trident))(?:.*? rv:([\w.]+)|)/.exec(ua) ||
+                    /((trident))(?:.*? rv:([\w.]+)|)/.exec(ua) ||
                     /((ms)ie) ([\w.]+)/i.exec(ua) ||
                     ua.indexOf("compatible") < 0 &&
                         /((moz)illa)(?:.*? rv:([\w.]+)|)/.exec(ua),
@@ -44,7 +44,7 @@
             version = match[3];
 
             // IE 10+
-            if (name === 'Trident'){
+            if (name === 'trident'){
                 name = 'msie';
                 prefix = 'ms';
             }
